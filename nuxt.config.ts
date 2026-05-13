@@ -107,6 +107,11 @@ export default defineNuxtConfig({
   //   host: '0.0.0.0',
   //   https: false,
   // },
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag === 'spline-viewer'
+    }
+  },
   i18n: {
     legacy: false,
     // baseUrl: 'http://92.205.130.62:5000',
