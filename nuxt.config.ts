@@ -103,10 +103,10 @@ export default defineNuxtConfig({
   image: {
     // dir: 'assets/images'
   },
-  devServer: {
-    host: '0.0.0.0',
-    https: false,
-  },
+  // devServer: {
+  //   host: '0.0.0.0',
+  //   https: false,
+  // },
   i18n: {
     legacy: false,
     // baseUrl: 'http://92.205.130.62:5000',
