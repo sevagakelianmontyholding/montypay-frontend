@@ -73,23 +73,22 @@
                             class="text-white"
                         />
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 lg:gap-4 mt-16 px-60">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 lg:gap-4 mt-16 md:px-60 px-4">
                             <div class="bg-white rounded-lg h-auto py-8 px-6">
                                 <div class="absolute top-0 start-1/2 -translate-y-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 w-[50px] h-[50px] bg-secondary rounded-full flex justify-center items-center font-bold">1</div>
-                                <div v-html="t('Pages.Whitelabel For PSP Acquirer.Section 3.Items[0]')" class="flex flex-col gap-20" />
-                                    
+                                <div v-html="t('Pages.Whitelabel For PSP Acquirer.Section 3.Items[0]')" class="flex flex-col gap-20"></div>
                             </div>
                             <div class="bg-white rounded-lg h-auto py-8 px-6">
                                 <div class="absolute top-0 start-1/2 -translate-y-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 w-[50px] h-[50px] bg-secondary rounded-full flex justify-center items-center font-bold">2</div>
-                                 <div v-html="t('Pages.Whitelabel For PSP Acquirer.Section 3.Items[1]')" class="flex flex-col gap-20" />
+                                <div v-html="t('Pages.Whitelabel For PSP Acquirer.Section 3.Items[1]')" class="flex flex-col gap-20"></div>
                             </div>
                             <div class="bg-white rounded-lg h-auto py-8 px-6">
                                 <div class="absolute top-0 start-1/2 -translate-y-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 w-[50px] h-[50px] bg-secondary rounded-full flex justify-center items-center font-bold">3</div>
-                                <div v-html="t('Pages.Whitelabel For PSP Acquirer.Section 3.Items[2]')" class="flex flex-col gap-20" />
+                                <div v-html="t('Pages.Whitelabel For PSP Acquirer.Section 3.Items[2]')" class="flex flex-col gap-20"></div>
                             </div>
                             <div class="bg-white rounded-lg h-auto py-8 px-6">
                                 <div class="absolute top-0 start-1/2 -translate-y-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 w-[50px] h-[50px] bg-secondary rounded-full flex justify-center items-center font-bold">4</div>
-                                 <div v-html="t('Pages.Whitelabel For PSP Acquirer.Section 3.Items[3]')" class="flex flex-col gap-20" />
+                                <div v-html="t('Pages.Whitelabel For PSP Acquirer.Section 3.Items[3]')" class="flex flex-col gap-20"></div>
                             </div>
                         </div>
                     </div>
