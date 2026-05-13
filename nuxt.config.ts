@@ -103,9 +103,14 @@ export default defineNuxtConfig({
   image: {
     // dir: 'assets/images'
   },
-  devServer: {
-    host: '0.0.0.0',
-    https: false,
+  // devServer: {
+  //   host: '0.0.0.0',
+  //   https: false,
+  // },
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag === 'spline-viewer'
+    }
   },
   i18n: {
     legacy: false,

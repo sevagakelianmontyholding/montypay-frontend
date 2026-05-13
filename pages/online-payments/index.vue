@@ -226,7 +226,13 @@
 
     <Accordion :data="faq" :title="t('Pages.Online Payments.Section 8.Title')" /> 
     
-    <BlueSection :title="t('Pages.Online Payments.Section 9.Title')"" :subtitle="t('Pages.Online Payments.Section 9.Description')" :buttonText="t('General.Buttons.Request a Demo')" buttonLink="/contact-us" image="/lets-grow-your-business-together.webp"/>
+    <BlueSection 
+        :title="t('Pages.Online Payments.Section 9.Title')" 
+        :subtitle="t('Pages.Online Payments.Section 9.Description')" 
+        :buttonText="t('General.Buttons.Request a Demo')" 
+        buttonLink="/contact-us" 
+        image="/lets-grow-your-business-together.webp"
+    />
 
     <PaymentSolutions />
 
