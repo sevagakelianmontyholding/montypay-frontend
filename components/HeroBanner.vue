@@ -1,32 +1,44 @@
 <template lang="">
-    <section id="section-1" class="flex pt-[100px] lg:pt-[70px] items-center w-full lg:min-h-screen bg-quaternary overflow-hidden">
-        
-        <Blob />
-        
-        <div class="container flex flex-col lg:flex-row items-center gap-20">
-            <div class="w-full lg:w-1/2 order-1 lg:order-none mb-10 lg:mb-0">
-                <NuxtPicture priority
-                    format="webp" 
-                    :src="`/images/${ image }.webp`" 
-                    :imgAttrs="{class:'w-full lg:h-full'}" 
-                />
-            </div>
-            <div class="flex w-full lg:w-1/2">
-                <ContentBlock 
-                    :subtitle="subtitle"
-                    :title="title" 
-                    :paragraph="paragraph" 
-                    :button="button" 
-                    :isBanner=true
-                    :link="link"
-                />
-            </div>
-        </div>
-    </section>
+  <section
+    id="section-1"
+    class="flex pt-[100px] lg:pt-[70px] items-center w-full lg:min-h-screen bg-quaternary overflow-hidden relative"
+  >
+    <img
+      src="/home-bg.webp"
+      class="absolute top-0 left-0 w-full h-full object-cover z-0"
+    />
+    <div class="container flex flex-col lg:flex-row items-center gap-20">
+      <div class="w-full lg:w-1/2 order-1 lg:order-none mb-10 lg:mb-0">
+        <NuxtPicture
+          priority
+          format="webp"
+          :src="`/images/${image}.webp`"
+          :imgAttrs="{ class: 'w-full lg:h-full' }"
+        />
+      </div>
+      <div class="flex w-full lg:w-1/2">
+        <ContentBlock
+          :subtitle="subtitle"
+          :title="title"
+          :paragraph="paragraph"
+          :button="button"
+          :isBanner="true"
+          :link="link"
+        />
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
-const props = defineProps(['subtitle', 'title', 'paragraph', 'button', 'image','link']);
+const props = defineProps([
+  "subtitle",
+  "title",
+  "paragraph",
+  "button",
+  "image",
+  "link",
+]);
 </script>
 
 <style scoped></style>

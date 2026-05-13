@@ -47,9 +47,9 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="w-full lg:aspect-square">
+                    <div class="w-full aspect-square">
                         <div class="px-10 py-14 w-full h-full bg-[linear-gradient(89.6deg,_rgba(0,51,131,0.1)_5.21%,_rgba(0,223,223,0.1)_134.35%)] overflow-hidden">
-                            <img class="h-full mx-auto" :src="item.image" />
+                            <img class="h-full w-full max-h-[80%] absolute object-contain left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" :src="item.image" />
                         </div>
                     </div>
                 </div>
