@@ -65,11 +65,11 @@ export default defineNuxtConfig({
           r.src=n;var u=t.getElementsByTagName(s)[0];
           u.parentNode.insertBefore(r,u);})(window,document,
           'https://sc-static.net/scevent.min.js');
-
+ 
           snaptr('init', '69f3c661-d3e9-4c72-856d-b28e2d6ce2ff', {
             user_email: '__INSERT_USER_EMAIL__'
           });
-
+ 
           snaptr('track', 'PAGE_VIEW');`,
           type: 'text/javascript',
           charset: 'utf-8'
@@ -107,11 +107,6 @@ export default defineNuxtConfig({
   //   host: '0.0.0.0',
   //   https: false,
   // },
-  vue: {
-    compilerOptions: {
-      isCustomElement: (tag) => tag === 'spline-viewer'
-    }
-  },
   i18n: {
     legacy: false,
     // baseUrl: 'http://92.205.130.62:5000',
@@ -145,10 +140,10 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     detectBrowserLanguage: false,
     // detectBrowserLanguage: {
-    // 	useCookie: true,  // Store the detected locale in a cookie
-    // 	cookieKey: 'i18n_redirected', // Name of the cookie
-    // 	alwaysRedirect: true, // Always redirect to the user's browser language if not set
-    // 	fallbackLocale: 'en-EU'
+    //  useCookie: true,  // Store the detected locale in a cookie
+    //  cookieKey: 'i18n_redirected', // Name of the cookie
+    //  alwaysRedirect: true, // Always redirect to the user's browser language if not set
+    //  fallbackLocale: 'en-EU'
     // },
     compilation: {
       strictMessage: false,
