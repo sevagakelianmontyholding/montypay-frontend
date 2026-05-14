@@ -123,13 +123,13 @@
 
                 <div class="flex flex-col sm:flex-row flex-wrap justify-center items-start lg:items-center gap-4 mt-16 w-full lg:w-11/12 mx-auto">
                     <h4 class="flex justify-center items-start lg:items-center gap-2 font-semibold text-xl py-8 px-4 bg-primary rounded-lg">
-                        <Icon name="fa6-solid:check" class="icon mt-1 lg:mt-0 text-2xl p-1 text-primary bg-quaternary rounded-full" />Expand your merchant acceptance geolocation
+                        <Icon name="fa6-solid:check" class="icon mt-1 lg:mt-0 text-2xl p-1 text-primary bg-quaternary rounded-full"/>Expand your merchant acceptance geolocation
                     </h4>  
                     <h4 class="flex justify-center items-start lg:items-center gap-2 font-semibold text-xl py-8 px-4 bg-primary rounded-lg">
-                        <Icon name="fa6-solid:check" class="icon mt-1 lg:mt-0 text-2xl p-1 text-primary bg-quaternary rounded-full" />Decrease international charges
+                        <Icon name="fa6-solid:check" class="icon mt-1 lg:mt-0 text-2xl p-1 text-primary bg-quaternary rounded-full"/>Decrease international charges
                     </h4>  
                     <h4 class="flex justify-center items-start lg:items-center gap-2 font-semibold text-xl py-8 px-4 bg-primary rounded-lg">
-                        <Icon name="fa6-solid:check" class="icon mt-1 lg:mt-0 text-2xl p-1 text-primary bg-quaternary rounded-full" />Increase revenues
+                        <Icon name="fa6-solid:check" class="icon mt-1 lg:mt-0 text-2xl p-1 text-primary bg-quaternary rounded-full"/>Increase revenues
                     </h4>  
                 </div>
 

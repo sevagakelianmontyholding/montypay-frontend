@@ -1,12 +1,11 @@
 <template>
     <section class="relative max-lg:py-10 lg:py-20">
-
         <img src="/pattern.svg" alt="pattern" class="max-lg:hidden absolute -z-10 end-0 top-0 rtl:rotate-180" />
 
         <div class="ms-container-align with-padding">
             <div class="flex max-lg:flex-col max-lg:gap-8 items-center lg:justify-between">
                 <div class="lg:w-[40%] flex flex-col gap-6 lg:gap-12">
-                    <h1 class="text-3xl lg:text-5xl leading-[1.3] lg:!leading-[1.5]" v-html="t('Pages.eCommerce.Banner.Title')" />
+                    <h1 class="text-3xl lg:text-5xl leading-[1.3] lg:!leading-[1.5]" v-html="t('Pages.eCommerce.Banner.Title')"></h1>
                     <p class="text-xl">{{ t('Pages.eCommerce.Banner.Description') }}</p>
                     <div>
                         <NuxtLinkLocale to="https://prechecklist.montypay.com/website/" target="_blank" class="inline-block mp-button-quaternary">{{ t('Pages.eCommerce.Banner.Button Text') }}</NuxtLinkLocale>  
@@ -91,183 +90,188 @@
                     </template>
                 </div>
             </div>
-
         </div>
-        
     </div>
+
     <div class="separator mb-0"></div>
 
     <Accordion :data="faq" :title="t('Pages.eCommerce.Section 10.Title')" /> 
     
-    
-    <BlueSection :title="t('Pages.eCommerce.Section 11.Title')" :subtitle="t('Pages.eCommerce.Section 11.Description')" :buttonText="t('General.Buttons.Request a Demo')" buttonLink="https://prechecklist.montypay.com/website" target="_blank" image="/unified-dashboard.webp"/>
+    <BlueSection 
+        :title="t('Pages.eCommerce.Section 11.Title')" 
+        :subtitle="t('Pages.eCommerce.Section 11.Description')" 
+        :buttonText="t('General.Buttons.Request a Demo')" 
+        buttonLink="https://prechecklist.montypay.com/website" 
+        target="_blank" 
+        image="/unified-dashboard.webp"
+    />
     
     <PaymentSolutions />
 </template>
 
 <script setup>
     const { t, locale, setLocale } = useI18n()
-useSeoMeta({
-    title: 'E-Commerce Payment Services for Online Businesses',
-    ogTitle: 'E-Commerce Payment Services for Online Businesses',
-    description: 'Empower your online store with MontyPay’s e-commerce payment services—secure checkout, global payment methods, and seamless customer experiences.',
-    ogDescription: 'Empower your online store with MontyPay’s e-commerce payment services—secure checkout, global payment methods, and seamless customer experiences.',
-    ogImage: 'https://example.com/image.png',
-    twitterCard: 'summary_large_image',
-})
+    
+    useSeoMeta({
+        title: 'E-Commerce Payment Services for Online Businesses',
+        ogTitle: 'E-Commerce Payment Services for Online Businesses',
+        description: 'Empower your online store with MontyPay’s e-commerce payment services—secure checkout, global payment methods, and seamless customer experiences.',
+        ogDescription: 'Empower your online store with MontyPay’s e-commerce payment services—secure checkout, global payment methods, and seamless customer experiences.',
+        ogImage: 'https://example.com/image.png',
+        twitterCard: 'summary_large_image',
+    })
 
-const items = [
-    {
-        title: t('Pages.eCommerce.Section 3.Title'),
-        description: t('Pages.eCommerce.Section 3.Description'),
-        image: '/shopify-website.webp',
-        items: [
-            {
-                svg: '/shopify-website-1.svg',
-                title: t('Pages.eCommerce.Section 3.Items[0].Title')
-            },
-            {
-                svg: '/shopify-website-2.svg',
-                title: t('Pages.eCommerce.Section 3.Items[1].Title')
-            },
-            {
-                svg: '/shopify-website-3.svg',
-                title: t('Pages.eCommerce.Section 3.Items[2].Title')
-            },
-            {
-                svg: '/shopify-website-4.svg',
-                title: t('Pages.eCommerce.Section 3.Items[3].Title')
-            },
-            {
-                svg: '/shopify-website-5.svg',
-                title: t('Pages.eCommerce.Section 3.Items[4].Title')
-            },
-            {
-                svg: '/shopify-website-6.svg',
-                title: t('Pages.eCommerce.Section 3.Items[5].Title')
-            }
-        ]
-    },
-    {
-        title: t('Pages.eCommerce.Section 4.Title'),
-        description: t('Pages.eCommerce.Section 4.Description'),
-        image: '/payment-gateway-integration.webp',
-        items: [
-            {
-                svg: '/payment-gateway-integration-1.svg',
-                title: t('Pages.eCommerce.Section 4.Items[0].Title')
-            },
-            {
-                svg: '/payment-gateway-integration-2.svg',
-                title: t('Pages.eCommerce.Section 4.Items[1].Title')
-            },
-            {
-                svg: '/payment-gateway-integration-3.svg',
-                title: t('Pages.eCommerce.Section 4.Items[2].Title')
-            },
-            {
-                svg: '/payment-gateway-integration-5.svg',
-                title: t('Pages.eCommerce.Section 4.Items[3].Title')
-            },
-            {
-                svg: '/payment-gateway-integration-6.svg',
-                title: t('Pages.eCommerce.Section 4.Items[4].Title')
-            }
-        ]
-    },
-    {
-        title: t('Pages.eCommerce.Section 5.Title'),
-        description: t('Pages.eCommerce.Section 5.Description'),
-        image: '/website-audit.webp',
-        items: [
-            {
-                svg: '/website-audit-1.svg',
-                title: t('Pages.eCommerce.Section 5.Items[0].Title')
-            },
-            {
-                svg: '/website-audit-2.svg',
-                title: t('Pages.eCommerce.Section 5.Items[1].Title')
-            },
-            {
-                svg: '/website-audit-3.svg',
-                title: t('Pages.eCommerce.Section 5.Items[2].Title')
-            },
-            {
-                svg: '/website-audit-4.svg',
-                title: t('Pages.eCommerce.Section 5.Items[3].Title')
-            },
-            {
-                svg: '/website-audit-5.svg',
-                title: t('Pages.eCommerce.Section 5.Items[4].Title')
-            }
-        ]
-    },
-    {
-        title: t('Pages.eCommerce.Section 6.Title'),
-        description: t('Pages.eCommerce.Section 6.Description'),
-        image: '/full-service-digital-growth.webp',
-        items: [
-            {
-                svg: '/full-service-digital-growth-1.svg',
-                title: t('Pages.eCommerce.Section 6.Items[0].Title')
-            },
-            {
-                svg: '/full-service-digital-growth-2.svg',
-                title: t('Pages.eCommerce.Section 6.Items[1].Title')
-            },
-            {
-                svg: '/full-service-digital-growth-3.svg',
-                title: t('Pages.eCommerce.Section 6.Items[2].Title')
-            },
-            {
-                svg: '/full-service-digital-growth-4.svg',
-                title: t('Pages.eCommerce.Section 6.Items[3].Title')
-            },
-            {
-                svg: '/full-service-digital-growth-5.svg',
-                title: t('Pages.eCommerce.Section 6.Items[4].Title')
-            }
-        ]
-    }
-]
+    const items = [
+        {
+            title: t('Pages.eCommerce.Section 3.Title'),
+            description: t('Pages.eCommerce.Section 3.Description'),
+            image: '/shopify-website.webp',
+            items: [
+                {
+                    svg: '/shopify-website-1.svg',
+                    title: t('Pages.eCommerce.Section 3.Items[0].Title')
+                },
+                {
+                    svg: '/shopify-website-2.svg',
+                    title: t('Pages.eCommerce.Section 3.Items[1].Title')
+                },
+                {
+                    svg: '/shopify-website-3.svg',
+                    title: t('Pages.eCommerce.Section 3.Items[2].Title')
+                },
+                {
+                    svg: '/shopify-website-4.svg',
+                    title: t('Pages.eCommerce.Section 3.Items[3].Title')
+                },
+                {
+                    svg: '/shopify-website-5.svg',
+                    title: t('Pages.eCommerce.Section 3.Items[4].Title')
+                },
+                {
+                    svg: '/shopify-website-6.svg',
+                    title: t('Pages.eCommerce.Section 3.Items[5].Title')
+                }
+            ]
+        },
+        {
+            title: t('Pages.eCommerce.Section 4.Title'),
+            description: t('Pages.eCommerce.Section 4.Description'),
+            image: '/payment-gateway-integration.webp',
+            items: [
+                {
+                    svg: '/payment-gateway-integration-1.svg',
+                    title: t('Pages.eCommerce.Section 4.Items[0].Title')
+                },
+                {
+                    svg: '/payment-gateway-integration-2.svg',
+                    title: t('Pages.eCommerce.Section 4.Items[1].Title')
+                },
+                {
+                    svg: '/payment-gateway-integration-3.svg',
+                    title: t('Pages.eCommerce.Section 4.Items[2].Title')
+                },
+                {
+                    svg: '/payment-gateway-integration-5.svg',
+                    title: t('Pages.eCommerce.Section 4.Items[3].Title')
+                },
+                {
+                    svg: '/payment-gateway-integration-6.svg',
+                    title: t('Pages.eCommerce.Section 4.Items[4].Title')
+                }
+            ]
+        },
+        {
+            title: t('Pages.eCommerce.Section 5.Title'),
+            description: t('Pages.eCommerce.Section 5.Description'),
+            image: '/website-audit.webp',
+            items: [
+                {
+                    svg: '/website-audit-1.svg',
+                    title: t('Pages.eCommerce.Section 5.Items[0].Title')
+                },
+                {
+                    svg: '/website-audit-2.svg',
+                    title: t('Pages.eCommerce.Section 5.Items[1].Title')
+                },
+                {
+                    svg: '/website-audit-3.svg',
+                    title: t('Pages.eCommerce.Section 5.Items[2].Title')
+                },
+                {
+                    svg: '/website-audit-4.svg',
+                    title: t('Pages.eCommerce.Section 5.Items[3].Title')
+                },
+                {
+                    svg: '/website-audit-5.svg',
+                    title: t('Pages.eCommerce.Section 5.Items[4].Title')
+                }
+            ]
+        },
+        {
+            title: t('Pages.eCommerce.Section 6.Title'),
+            description: t('Pages.eCommerce.Section 6.Description'),
+            image: '/full-service-digital-growth.webp',
+            items: [
+                {
+                    svg: '/full-service-digital-growth-1.svg',
+                    title: t('Pages.eCommerce.Section 6.Items[0].Title')
+                },
+                {
+                    svg: '/full-service-digital-growth-2.svg',
+                    title: t('Pages.eCommerce.Section 6.Items[1].Title')
+                },
+                {
+                    svg: '/full-service-digital-growth-3.svg',
+                    title: t('Pages.eCommerce.Section 6.Items[2].Title')
+                },
+                {
+                    svg: '/full-service-digital-growth-4.svg',
+                    title: t('Pages.eCommerce.Section 6.Items[3].Title')
+                },
+                {
+                    svg: '/full-service-digital-growth-5.svg',
+                    title: t('Pages.eCommerce.Section 6.Items[4].Title')
+                }
+            ]
+        }
+    ]
 
-const faq = [
-    {
-        question: t('Pages.eCommerce.Section 10.Items[0].Question'),
-        answer: t('Pages.eCommerce.Section 10.Items[0].Answer')
-    },
-    {
-        question: t('Pages.eCommerce.Section 10.Items[1].Question'),
-        answer: t('Pages.eCommerce.Section 10.Items[1].Answer')
-    },
-    {
-        question: t('Pages.eCommerce.Section 10.Items[2].Question'),
-        answer: t('Pages.eCommerce.Section 10.Items[2].Answer')
-    },
-    {
-        question: t('Pages.eCommerce.Section 10.Items[3].Question'),
-        answer: t('Pages.eCommerce.Section 10.Items[3].Answer')
-    },
-    {
-        question: t('Pages.eCommerce.Section 10.Items[4].Question'),
-        answer: t('Pages.eCommerce.Section 10.Items[4].Answer')
-    },
-    // {
-    //     question: t('Pages.eCommerce Services.Section 7.Items[5].Question'),
-    //     answer: t('Pages.eCommerce Services.Section 7.Items[5].Answer')
-    // },
-    {
-        question: t('Pages.eCommerce.Section 10.Items[6].Question'),
-        answer: t('Pages.eCommerce.Section 10.Items[6].Answer')
-    }
-]
+    const faq = [
+        {
+            question: t('Pages.eCommerce.Section 10.Items[0].Question'),
+            answer: t('Pages.eCommerce.Section 10.Items[0].Answer')
+        },
+        {
+            question: t('Pages.eCommerce.Section 10.Items[1].Question'),
+            answer: t('Pages.eCommerce.Section 10.Items[1].Answer')
+        },
+        {
+            question: t('Pages.eCommerce.Section 10.Items[2].Question'),
+            answer: t('Pages.eCommerce.Section 10.Items[2].Answer')
+        },
+        {
+            question: t('Pages.eCommerce.Section 10.Items[3].Question'),
+            answer: t('Pages.eCommerce.Section 10.Items[3].Answer')
+        },
+        {
+            question: t('Pages.eCommerce.Section 10.Items[4].Question'),
+            answer: t('Pages.eCommerce.Section 10.Items[4].Answer')
+        },
+        // {
+        //     question: t('Pages.eCommerce Services.Section 7.Items[5].Question'),
+        //     answer: t('Pages.eCommerce Services.Section 7.Items[5].Answer')
+        // },
+        {
+            question: t('Pages.eCommerce.Section 10.Items[6].Question'),
+            answer: t('Pages.eCommerce.Section 10.Items[6].Answer')
+        }
+    ]
 
-const clients = [
-    '/ozey.webp','/leiak.webp','/marios.webp', '/lost.webp', '/beydee.webp'
-]
-const duplicatedMarqueeList = computed(() => [...clients, ...clients, ...clients]);
+    const clients = [
+        '/ozey.webp','/leiak.webp','/marios.webp', '/lost.webp', '/beydee.webp'
+    ]
 
-
+    const duplicatedMarqueeList = computed(() => [...clients, ...clients, ...clients]);
 </script>
 
 <style lang="sass" scoped>

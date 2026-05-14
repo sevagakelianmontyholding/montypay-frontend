@@ -68,7 +68,7 @@
                         <img class="w-full h-full object-contain" src="/wherever-you-do-business.webp"  />
                     </div>
                     <div class="w-full">
-                        <p v-html="t('Pages.Payment Orchestration Network.Section 2.Items[3].Description')" class="text-xl lg:p-12" />
+                        <p v-html="t('Pages.Payment Orchestration Network.Section 2.Items[3].Description')" class="text-xl lg:p-12"></p>
                     </div>
                 </div>
             </div>

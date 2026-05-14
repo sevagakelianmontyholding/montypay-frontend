@@ -90,17 +90,17 @@
                 <div class="lg:w-1/3 flex flex-col gap-6 p-4 max-lg:pb-12 lg:p-8 bg-[#E9ECF4D9] rounded-xl">
                     <img class="flex-shrink-0" src="/images/mobile-ready-checkout.svg" alt="Mobile-Ready Checkout" width="121" height="121" />
                     <h3 class="text-2xl font-semibold">{{ t('Pages.Online Payments.Section 4.Cards 1[0].Title') }}</h3>
-                    <p v-html="t('Pages.Online Payments.Section 4.Cards 1[0].Description')" class="text-xl" />
+                    <p v-html="t('Pages.Online Payments.Section 4.Cards 1[0].Description')" class="text-xl"></p>
                 </div>
                 <div class="lg:w-1/3 flex flex-col gap-6 p-4 max-lg:pb-12 lg:p-8 bg-[#E9ECF4D9] rounded-xl">
                     <img class="flex-shrink-0" src="/images/host-to-host-integration.svg" alt="Host to Host Integration" width="121" height="121" />
                     <h3 class="text-2xl font-semibold">{{ t('Pages.Online Payments.Section 4.Cards 1[1].Title') }}</h3>
-                    <p v-html="t('Pages.Online Payments.Section 4.Cards 1[1].Description')" class="text-xl" />
+                    <p v-html="t('Pages.Online Payments.Section 4.Cards 1[1].Description')" class="text-xl"></p>
                 </div>
                 <div class="lg:w-1/3 flex flex-col gap-6 p-4 max-lg:pb-12 lg:p-8 bg-[#E9ECF4D9] rounded-xl">
                     <img class="flex-shrink-0" src="/images/social-commerce.svg" alt="Social Commerce" width="121" height="121" />
                     <h3 class="text-2xl font-semibold">{{ t('Pages.Online Payments.Section 4.Cards 1[2].Title') }}</h3>
-                    <p v-html="t('Pages.Online Payments.Section 4.Cards 1[2].Description')" class="text-xl" />
+                    <p v-html="t('Pages.Online Payments.Section 4.Cards 1[2].Description')" class="text-xl"></p>
                 </div>
             </div>
 
@@ -108,7 +108,7 @@
                 <div class="flex flex-col gap-6 lg:w-3/5">
                     <img class="flex-shrink-0" src="/images/cms-plugins.svg" alt="CMS Plugins" width="121" height="121" />
                     <h3 class="text-2xl font-semibold">{{ t('Pages.Online Payments.Section 4.Cards 1[3].Title') }}</h3>
-                    <p v-html="t('Pages.Online Payments.Section 4.Cards 1[3].Description')" class="text-xl lg:w-1/2" />
+                    <p v-html="t('Pages.Online Payments.Section 4.Cards 1[3].Description')" class="text-xl lg:w-1/2"></p>
                 </div>
                 
                 <div class="lg:w-2/5 grid grid-cols-3 place-items-center gap-4 lg:gap-8">
@@ -130,7 +130,7 @@
                     <div class="flex flex-col gap-6">
                         <img class="flex-shrink-0" src="/images/mobile-sdk.svg" alt="Mobile-Ready Checkout" width="121" height="121" />
                         <h3 class="text-2xl font-semibold">{{ t('Pages.Online Payments.Section 4.Cards 1[4].Title') }}</h3>
-                        <p v-html="t('Pages.Online Payments.Section 4.Cards 1[4].Description')" class="text-xl" />
+                        <p v-html="t('Pages.Online Payments.Section 4.Cards 1[4].Description')" class="text-xl"></p>
                     </div>
                     <div class="grid grid-cols-3 place-items-center gap-2 lg:gap-4 mt-6">
                         <img src="/images/flutter.svg" alt="flutter" width="210" height="90" />
@@ -142,7 +142,7 @@
                     <div class="flex flex-col gap-6">
                         <img class="flex-shrink-0" src="/images/platform-integration.svg" alt="Platform Integration" width="121" height="121" />
                         <h3 class="text-2xl font-semibold">{{ t('Pages.Online Payments.Section 4.Cards 1[5].Title') }}</h3>
-                        <p v-html="t('Pages.Online Payments.Section 4.Cards 1[5].Description')" class="text-xl" />
+                        <p v-html="t('Pages.Online Payments.Section 4.Cards 1[5].Description')" class="text-xl"></p>
                     </div>
                     <div class="grid grid-cols-4 place-items-center gap-2 mt-6">
                         <img src="/images/igloorooms.svg" alt="IglooRooms" width="210" height="90" />

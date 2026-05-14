@@ -6,7 +6,7 @@
         <div class="ms-container-align with-padding">
             <div class="flex max-lg:flex-col max-lg:gap-8 items-center lg:justify-between">
                 <div class="lg:w-[40%] flex flex-col gap-6 lg:gap-12">
-                    <h1 class="text-3xl lg:text-5xl leading-[1.3] lg:!leading-[1.5]" v-html="t('Pages.eCommerce.Banner.Title')" />
+                    <h1 class="text-3xl lg:text-5xl leading-[1.3] lg:!leading-[1.5]" v-html="t('Pages.eCommerce.Banner.Title')"></h1>
                     <p class="text-xl">{{ t('Pages.eCommerce.Banner.Description') }}</p>
                     <div>
                         <NuxtLinkLocale to="https://prechecklist.montypay.com/website/" target="_blank" class="inline-block mp-button-quaternary">{{ t('Pages.eCommerce.Banner.Button Text') }}</NuxtLinkLocale>  

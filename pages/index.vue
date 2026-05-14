@@ -178,27 +178,27 @@
                             <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
                                 <div class="flex flex-col justify-between gap-10 border rounded-lg p-5 aspect-square">
                                     <img src="/images/coins-stacked.svg" alt="Cashless payments" width="30" height="30" />
-                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 1')" />
+                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 1')"></span>
                                 </div>
                                 <div class="flex flex-col justify-between gap-10 border rounded-lg p-5 aspect-square">
                                     <img src="/images/credit-card.svg" alt="Card payments" width="30" height="30" />
-                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 2')" />
+                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 2')"></span>
                                 </div>
                                 <div class="flex flex-col justify-between gap-10 border rounded-lg p-5 aspect-square">
                                     <img src="/images/qr-code-white.svg" alt="QR payments" width="30" height="30" />
-                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 3')" />
+                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 3')"></span>
                                 </div>
                                 <div class="flex flex-col justify-between gap-10 border rounded-lg p-5 aspect-square">
                                     <img src="/images/wallet.svg" alt="Wallet payments" width="30" height="30" />
-                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 4')" />
+                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 4')"></span>
                                 </div>
                                 <div class="flex flex-col justify-between gap-10 border rounded-lg p-5 aspect-square">
                                     <img src="/images/lock.svg" alt="NFC Compatible" width="30" height="30" />
-                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 5')" />
+                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 5')"></span>
                                 </div>
                                 <div class="flex flex-col justify-between gap-10 border rounded-lg p-5 aspect-square">
                                     <img src="/images/send.svg" alt="ECR Integration" width="30" height="30" />
-                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 6')" />
+                                    <span v-html="t('Pages.Homepage.Section 4.List Items 1.Item 6')"></span>
                                 </div>
                             </div>
                         </div>
@@ -224,15 +224,15 @@
                     <div class="grid grid-cols-2 lg:grid-cols-3 mt-16">
                         <div class="flex flex-col gap-10 border-[0.5px] rounded-tl-lg rounded-bl-lg py-5 px-4">
                             <img src="/images/file-check.svg" alt="Settle bills & check menu" width="30" height="30" />
-                            <span class="mt-6" v-html="t('Pages.Homepage.Section 5.List Items 2.Item 1')" />
+                            <span class="mt-6" v-html="t('Pages.Homepage.Section 5.List Items 2.Item 1')"></span>
                         </div>
                         <div class="flex flex-col gap-10 border-[0.5px] py-5 px-4">
                             <img src="/images/git-branch.svg" alt="Enhance brand visibility" width="30" height="30" />
-                            <span class="mt-6" v-html="t('Pages.Homepage.Section 5.List Items 2.Item 2')" />
+                            <span class="mt-6" v-html="t('Pages.Homepage.Section 5.List Items 2.Item 2')"></span>
                         </div>
                         <div class="flex flex-col gap-10 border-[0.5px] rounded-tr-lg rounded-br-lg py-5 px-4">
                             <img src="/images/currency-dollar-circle.svg" alt="Boosts tips" width="30" height="30" />
-                            <span class="mt-6" v-html="t('Pages.Homepage.Section 5.List Items 2.Item 3')" />
+                            <span class="mt-6" v-html="t('Pages.Homepage.Section 5.List Items 2.Item 3')"></span>
                         </div>
                     </div>
                 </div>
