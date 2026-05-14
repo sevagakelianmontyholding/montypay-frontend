@@ -8,7 +8,7 @@
                     <h1 class="text-3xl lg:text-5xl leading-[1.3] lg:!leading-[1.5]" v-html="t('Pages.eCommerce.Banner.Title')"></h1>
                     <p class="text-xl">{{ t('Pages.eCommerce.Banner.Description') }}</p>
                     <div>
-                        <NuxtLinkLocale to="https://prechecklist.montypay.com/website/" target="_blank" class="inline-block mp-button-quaternary">{{ t('Pages.eCommerce.Banner.Button Text') }}</NuxtLinkLocale>  
+                        <a href="https://prechecklist.montypay.com/website/" target="_blank" class="inline-block mp-button-quaternary">{{ t('Pages.eCommerce.Banner.Button Text') }}</a>  
                     </div>
                 </div>
                 <div class="lg:w-[45%] lg:me-20">
@@ -31,12 +31,12 @@
     <section class="py-16">
         <div class="container">
             <div class="flex flex-col gap-16">
-                <div v-for="(item,index) in items" :class="(index%2)>0 ? 'flex-row-reverse' : 'flex-row'" class="flex max-lg:flex-col max-lg:gap-10 lg:gap-32 items-center">
+                <div v-for="(item,index) in items" :key="index" :class="(index%2)>0 ? 'flex-row-reverse' : 'flex-row'" class="flex max-lg:flex-col max-lg:gap-10 lg:gap-32 items-center">
                     <div class="w-full">
                         <h3 class="text-2xl font-bold mb-2">{{ item.title }}</h3>
                         <p>{{ item.description }}</p>
                         <ul class="flex flex-col gap-5 mt-10">
-                            <li v-for="list in item.items" class="flex items-center gap-2">
+                            <li v-for="(list, listIndex) in item.items" :key="listIndex" class="flex items-center gap-2">
                                 <span>
                                    <img :src="list.svg" />
                                 </span>
@@ -84,7 +84,7 @@
             <h2 class="text-2xl font-bold text-center">{{t('Pages.eCommerce.Section 9.Title')}}</h2>
 
             <div class="marquee1 overflow-hidden mt-10">
-                <div class="wrapper grid grid-flow-col auto-cols-[8rem] lg:auto-cols-[18rem] justify-items-center items-center mt-10 animate-[marquee1_20s_linear_infinite] lg:animate-[marquee1lg_20s_linear_infinite] rtl:[animation-direction:reverse]"">
+                <div class="wrapper grid grid-flow-col auto-cols-[8rem] lg:auto-cols-[18rem] justify-items-center items-center mt-10 animate-[marquee1_20s_linear_infinite] lg:animate-[marquee1lg_20s_linear_infinite] rtl:[animation-direction:reverse]">
                     <template v-for="(marquee, index) in duplicatedMarqueeList" :key="index">
                         <img :src="marquee" alt="Client" />
                     </template>
