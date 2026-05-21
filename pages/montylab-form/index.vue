@@ -242,17 +242,26 @@
                 Label: t(`General.Montylab Industries.${i.Name}`, i.Name)
             }))
 
+            // Load reCAPTCHA script
+            if (!document.getElementById('recaptcha-script')) {
+                const script = document.createElement('script');
+                script.id = 'recaptcha-script';
+                script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+                script.async = true;
+                script.defer = true;
+                document.head.appendChild(script);
+            }
+
         } catch (error) {
             console.error('Failed to fetch dropdown data:', error)
         }
     })
 
-    // const RECAPTCHA_SITE_KEY = '6Le6TscrAAAAAIzSW6d0-jC_oUhqcFGAkXRb87Mc';
-    // const MP_API_URL = 'https://mm-apis.montypay.com/core/api/v1/MPContactUs';
-    // const MP_API_HEADERS = {
-    //     Tenant: 'd2ed2d13-09ea-4311-923e-21fae0f7c063',
-    //     LanguageCode: 'en'
-    // };
+    const RECAPTCHA_SITE_KEY = import.meta.env.VITE_MP_RECAPTCHA_SITE_KEY
+    const MP_API_HEADERS = {
+        tenant: import.meta.env.VITE_MP_API_TENANT,
+        LanguageCode: import.meta.env.VITE_MP_API_LANGUAGE,
+    };
 
     const submissionMessage = ref('');
     const submitting = ref(false);
@@ -378,7 +387,7 @@
                 const countryLabel = countries.value.find(c => c.Value === form.value.country)?.Label || form.value.country
                 const industryLabel = industries.value.find(i => i.Value === form.value.industry)?.Label || form.value.industry
 
-                const WP_API_ENDPOINT = 'https://backend.montypay.com/wp-json/contact-form-7/v1/contact-forms/9/feedback';
+                const WP_API_ENDPOINT = 'https://backend.montypay.com/wp-json/contact-form-7/v1/contact-forms/3355/feedback';
 
                 // 1. WordPress — uses Labels for dropdowns
                 const formData = new FormData();
@@ -407,35 +416,37 @@
 
                 // 2. CRM — uses GUIDs for dropdowns
                 const recaptchaToken = await getRecaptchaToken();
+
                 const apiPayload = {
                     firstName: form.value.first_name,
                     lastName: form.value.last_name,
-                    country: form.value.country,               // 👈 GUID Value
+                    country: form.value.country,
                     phoneNumber: form.value.mobile,
                     companyName: form.value.company,
                     workEmail: form.value.email,
                     title: form.value.title,
-                    industry: form.value.industry,             // 👈 GUID Value
-                    hasWebsite: form.value.has_website === 'yes', // 👈 boolean
-                    onlineRevenueBand: Number(form.value.revenue), // 👈 integer (1/2/3/4)
+                    industry: form.value.industry,
+                    hasWebsite: form.value.has_website === 'yes',
+                    onlineRevenueBand: Number(form.value.revenue),
                     message: form.value.message,
-                    'marketing source of contact': '9a7c9282-7ad6-ec11-a7b5-6045bd951f1b',
-                    marketingcampaign: '',
+                    marketingsourceofcontact: '9a7c9282-7ad6-ec11-a7b5-6045bd951f1b',
+                    marketingcampaign: '8ca33b2d-9a2e-f111-88b3-000d3a2c97d1'
                 };
 
                 const apiRes = await fetch(import.meta.env.VITE_MP_API_URL, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
                         ...MP_API_HEADERS,
+                        'Content-Type': 'application/json',
                         RecaptchaToken: recaptchaToken
                     },
                     body: JSON.stringify(apiPayload)
                 });
 
                 if (!apiRes.ok) {
-                    const msg = await apiRes.text();
-                    throw new Error(`MontyPay API error: ${apiRes.status} ${msg}`);
+                    const errorText = await apiRes.text();
+                    console.error(errorText);
+                    throw new Error('Monty Lab API submission failed');
                 }
 
                 submissionMessage.value = "Thank you for your message.";
