@@ -207,17 +207,43 @@
         twitterCard: 'summary_large_image',
     })
 
+    const RECAPTCHA_SITE_KEY = import.meta.env.VITE_MP_RECAPTCHA_SITE_KEY
+    const MP_API_HEADERS = {
+        tenant: import.meta.env.VITE_MP_API_TENANT,
+        LanguageCode: import.meta.env.VITE_MP_API_LANGUAGE,
+    };
+
+    useHead({
+        script: [
+            { src: `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`, async: true, defer: true }
+        ]
+    })
+
     const router = useRouter();
     const emit = defineEmits();
 
     const countries = ref([])
     const industries = ref([])
 
-    const RECAPTCHA_SITE_KEY = import.meta.env.VITE_MP_RECAPTCHA_SITE_KEY
-    const MP_API_HEADERS = {
-        tenant: import.meta.env.VITE_MP_API_TENANT,
-        LanguageCode: import.meta.env.VITE_MP_API_LANGUAGE,
-    };
+    async function getRecaptchaToken() {
+        // waits until the script is ready
+        await new Promise((resolve) => {
+            if (window.grecaptcha && window.grecaptcha.ready) return resolve();
+            const check = setInterval(() => {
+                if (window.grecaptcha && window.grecaptcha.ready) {
+                    clearInterval(check);
+                    resolve();
+                }
+            }, 50);
+        });
+        return new Promise((resolve, reject) => {
+            window.grecaptcha.ready(() => {
+                window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' })
+                    .then(resolve)
+                    .catch(reject);
+            });
+        });
+    }
 
     onMounted(async () => {
         try {
@@ -249,17 +275,6 @@
             }))
         } catch (error) {
             console.error('Failed to fetch dropdown data:', error)
-        }
-        
-        if (!document.getElementById('recaptcha-script')) {
-            const script = document.createElement('script');
-
-            script.id = 'recaptcha-script';
-            script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
-            script.async = true;
-            script.defer = true;
-
-            document.head.appendChild(script);
         }
     })
 
@@ -357,28 +372,6 @@
             safe: t('General.Messages.Errors.Safe')
         },
     }));
-
-    async function getRecaptchaToken() {
-        return new Promise((resolve, reject) => {
-            if (!window.grecaptcha) {
-                reject(new Error('reCAPTCHA not loaded'));
-                return;
-            }
-
-            window.grecaptcha.ready(async () => {
-                try {
-                    const token = await window.grecaptcha.execute(
-                        RECAPTCHA_SITE_KEY,
-                        { action: 'submit' }
-                    );
-
-                    resolve(token);
-                } catch (err) {
-                    reject(err);
-                }
-            });
-        });
-    }
 
     const handleSubmit = async () => {
         if (validateForm(form, errors, validationRules.value)) {
