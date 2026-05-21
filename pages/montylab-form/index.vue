@@ -222,14 +222,14 @@
     onMounted(async () => {
         try {
             const [countriesRes, industriesRes] = await Promise.all([
-            fetch(import.meta.env.VITE_MONTYLAB_COUNTRIES_API_URL, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json', 's-key': import.meta.env.VITE_MONTYLAB_COUNTRIES_API_KEY },
-            }),
-            fetch(import.meta.env.VITE_MONTYLAB_INDUSTRIES_API_URL, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json', 's-key': import.meta.env.VITE_MONTYLAB_INDUSTRIES_API_KEY },
-            }),
+                fetch(import.meta.env.VITE_MONTYLAB_COUNTRIES_API_URL, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json', 's-key': import.meta.env.VITE_MONTYLAB_COUNTRIES_API_KEY },
+                }),
+                fetch(import.meta.env.VITE_MONTYLAB_INDUSTRIES_API_URL, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json', 's-key': import.meta.env.VITE_MONTYLAB_INDUSTRIES_API_KEY },
+                }),
             ])
 
             const [countriesJson, industriesJson] = await Promise.all([
@@ -247,20 +247,19 @@
                 Value: i.Industry,
                 Label: t(`General.Montylab Industries.${i.Name}`, i.Name)
             }))
-
-            if (!document.getElementById('recaptcha-script')) {
-                const script = document.createElement('script');
-
-                script.id = 'recaptcha-script';
-                script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
-                script.async = true;
-                script.defer = true;
-
-                document.head.appendChild(script);
-            }
-
         } catch (error) {
             console.error('Failed to fetch dropdown data:', error)
+        }
+        
+        if (!document.getElementById('recaptcha-script')) {
+            const script = document.createElement('script');
+
+            script.id = 'recaptcha-script';
+            script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+            script.async = true;
+            script.defer = true;
+
+            document.head.appendChild(script);
         }
     })
 
