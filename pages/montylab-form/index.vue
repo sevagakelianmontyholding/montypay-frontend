@@ -1,5 +1,4 @@
-<template>
-    
+<template>  
     <section class="relative max-lg:py-10 lg:py-20">
         <div class="container">
             <div class="flex max-lg:flex-col max-lg:gap-8 gap-16 lg:justify-between">
@@ -206,7 +205,6 @@
         ogImage: 'https://example.com/image.png',
         twitterCard: 'summary_large_image',
     })
-
     const RECAPTCHA_SITE_KEY = import.meta.env.VITE_MP_RECAPTCHA_SITE_KEY
     const MP_API_HEADERS = {
         tenant: import.meta.env.VITE_MP_API_TENANT,
