@@ -104,34 +104,39 @@
                         </div>
                     </div>
 
-                    <div class="flex gap-8 w-full">
-                        <!-- Question -->
-                        <div class="flex items-center justify-between w-full">
-                            <p class="text-white text-lg">{{ t('General.Placeholders.Do you have a website?') }}</p>
+                    <div class="flex max-lg:flex-col gap-8 w-full">
+                        <div class="flex flex-col gap-1 w-full">
+                            <!-- Question -->
+                            <div class="flex gap-8 w-full">
+                                <div class="flex items-center justify-between w-full">
+                                    <p class="text-white text-lg">{{ t('General.Placeholders.Do you have a website?') }}</p>
 
-                            <div class="flex gap-6">
-                            <!-- Yes -->
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input
-                                    type="radio"
-                                    value="yes"
-                                    v-model="form.has_website"
-                                    class="w-5 h-5"
-                                />
-                                <span class="text-white">{{ t('General.Yes') }}</span>
-                            </label>
+                                    <div class="flex gap-6">
+                                    <!-- Yes -->
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            value="yes"
+                                            v-model="form.has_website"
+                                            class="w-5 h-5"
+                                        />
+                                        <span class="text-white">{{ t('General.Yes') }}</span>
+                                    </label>
 
-                            <!-- No -->
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input
-                                    type="radio"
-                                    value="no"
-                                    v-model="form.has_website"
-                                    class="w-5 h-5"
-                                />
-                                <span class="text-white">{{ t('General.No') }}</span>
-                            </label>
+                                    <!-- No -->
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            value="no"
+                                            v-model="form.has_website"
+                                            class="w-5 h-5"
+                                        />
+                                        <span class="text-white">{{ t('General.No') }}</span>
+                                    </label>
+                                    </div>
+                                </div>
                             </div>
+                            <div v-if="errors.has_website" class="text-red-500 text-xs">{{ errors.has_website }}</div>
                         </div>
                     </div>
 
@@ -445,7 +450,7 @@
                 submissionMessage.value = "Thank you for your message.";
                 submitting.value = false;
                 resetForm();
-                router.push('/thank-you');
+                // router.push('/thank-you');
 
             } catch (error) {
                 console.error("Form submission error:", error);
