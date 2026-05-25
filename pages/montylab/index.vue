@@ -8,7 +8,7 @@
                     <h1 class="text-3xl lg:text-5xl leading-[1.3] lg:!leading-[1.5]" v-html="t('Pages.eCommerce.Banner.Title')"></h1>
                     <p class="text-xl">{{ t('Pages.eCommerce.Banner.Description') }}</p>
                     <div>
-                        <a href="https://prechecklist.montypay.com/website/" target="_blank" class="inline-block mp-button-quaternary">{{ t('Pages.eCommerce.Banner.Button Text') }}</a>  
+                        <NuxtLink to="/montylab-form" class="inline-block mp-button-quaternary">{{ t('Pages.eCommerce.Banner.Button Text') }}</NuxtLink>  
                     </div>
                 </div>
                 <div class="lg:w-[45%] lg:me-20">
@@ -101,8 +101,7 @@
         :title="t('Pages.eCommerce.Section 11.Title')" 
         :subtitle="t('Pages.eCommerce.Section 11.Description')" 
         :buttonText="t('General.Buttons.Request a Demo')" 
-        buttonLink="https://prechecklist.montypay.com/website" 
-        target="_blank" 
+        buttonLink="/montylab-form" 
         image="/unified-dashboard.webp"
     />
     
