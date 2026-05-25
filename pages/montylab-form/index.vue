@@ -1,5 +1,4 @@
-<template>
-    
+<template>  
     <section class="relative max-lg:py-10 lg:py-20">
         <div class="container">
             <div class="flex max-lg:flex-col max-lg:gap-8 gap-16 lg:justify-between">
@@ -105,34 +104,39 @@
                         </div>
                     </div>
 
-                    <div class="flex gap-8 w-full">
-                        <!-- Question -->
-                        <div class="flex items-center justify-between w-full">
-                            <p class="text-white text-lg">{{ t('General.Placeholders.Do you have a website?') }}</p>
+                    <div class="flex max-lg:flex-col gap-8 w-full">
+                        <div class="flex flex-col gap-1 w-full">
+                            <!-- Question -->
+                            <div class="flex gap-8 w-full">
+                                <div class="flex items-center justify-between w-full">
+                                    <p class="text-white text-lg">{{ t('General.Placeholders.Do you have a website?') }}</p>
 
-                            <div class="flex gap-6">
-                            <!-- Yes -->
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input
-                                    type="radio"
-                                    value="yes"
-                                    v-model="form.has_website"
-                                    class="w-5 h-5"
-                                />
-                                <span class="text-white">{{ t('General.Yes') }}</span>
-                            </label>
+                                    <div class="flex gap-6">
+                                    <!-- Yes -->
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            value="yes"
+                                            v-model="form.has_website"
+                                            class="w-5 h-5"
+                                        />
+                                        <span class="text-white">{{ t('General.Yes') }}</span>
+                                    </label>
 
-                            <!-- No -->
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input
-                                    type="radio"
-                                    value="no"
-                                    v-model="form.has_website"
-                                    class="w-5 h-5"
-                                />
-                                <span class="text-white">{{ t('General.No') }}</span>
-                            </label>
+                                    <!-- No -->
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            value="no"
+                                            v-model="form.has_website"
+                                            class="w-5 h-5"
+                                        />
+                                        <span class="text-white">{{ t('General.No') }}</span>
+                                    </label>
+                                    </div>
+                                </div>
                             </div>
+                            <div v-if="errors.has_website" class="text-red-500 text-xs">{{ errors.has_website }}</div>
                         </div>
                     </div>
 
@@ -206,6 +210,17 @@
         ogImage: 'https://example.com/image.png',
         twitterCard: 'summary_large_image',
     })
+    const RECAPTCHA_SITE_KEY = import.meta.env.VITE_MP_RECAPTCHA_SITE_KEY
+    const MP_API_HEADERS = {
+        tenant: import.meta.env.VITE_MP_API_TENANT,
+        LanguageCode: import.meta.env.VITE_MP_API_LANGUAGE,
+    };
+
+    useHead({
+        script: [
+            { src: `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`, async: true, defer: true }
+        ]
+    })
 
     const router = useRouter();
     const emit = defineEmits();
@@ -213,17 +228,37 @@
     const countries = ref([])
     const industries = ref([])
 
+    async function getRecaptchaToken() {
+        // waits until the script is ready
+        await new Promise((resolve) => {
+            if (window.grecaptcha && window.grecaptcha.ready) return resolve();
+            const check = setInterval(() => {
+                if (window.grecaptcha && window.grecaptcha.ready) {
+                    clearInterval(check);
+                    resolve();
+                }
+            }, 50);
+        });
+        return new Promise((resolve, reject) => {
+            window.grecaptcha.ready(() => {
+                window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' })
+                    .then(resolve)
+                    .catch(reject);
+            });
+        });
+    }
+
     onMounted(async () => {
         try {
             const [countriesRes, industriesRes] = await Promise.all([
-            fetch(import.meta.env.VITE_MONTYLAB_COUNTRIES_API_URL, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json', 's-key': import.meta.env.VITE_MONTYLAB_COUNTRIES_API_KEY },
-            }),
-            fetch(import.meta.env.VITE_MONTYLAB_INDUSTRIES_API_URL, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json', 's-key': import.meta.env.VITE_MONTYLAB_INDUSTRIES_API_KEY },
-            }),
+                fetch(import.meta.env.VITE_MONTYLAB_COUNTRIES_API_URL, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json', 's-key': import.meta.env.VITE_MONTYLAB_COUNTRIES_API_KEY },
+                }),
+                fetch(import.meta.env.VITE_MONTYLAB_INDUSTRIES_API_URL, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json', 's-key': import.meta.env.VITE_MONTYLAB_INDUSTRIES_API_KEY },
+                }),
             ])
 
             const [countriesJson, industriesJson] = await Promise.all([
@@ -241,18 +276,10 @@
                 Value: i.Industry,
                 Label: t(`General.Montylab Industries.${i.Name}`, i.Name)
             }))
-
         } catch (error) {
             console.error('Failed to fetch dropdown data:', error)
         }
     })
-
-    // const RECAPTCHA_SITE_KEY = '6Le6TscrAAAAAIzSW6d0-jC_oUhqcFGAkXRb87Mc';
-    // const MP_API_URL = 'https://mm-apis.montypay.com/core/api/v1/MPContactUs';
-    // const MP_API_HEADERS = {
-    //     Tenant: 'd2ed2d13-09ea-4311-923e-21fae0f7c063',
-    //     LanguageCode: 'en'
-    // };
 
     const submissionMessage = ref('');
     const submitting = ref(false);
@@ -349,26 +376,6 @@
         },
     }));
 
-    async function getRecaptchaToken() {
-        // waits until the script is ready
-        await new Promise((resolve) => {
-            if (window.grecaptcha && window.grecaptcha.ready) return resolve();
-            const check = setInterval(() => {
-                if (window.grecaptcha && window.grecaptcha.ready) {
-                    clearInterval(check);
-                    resolve();
-                }
-            }, 50);
-        });
-        return new Promise((resolve, reject) => {
-            window.grecaptcha.ready(() => {
-                window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' })
-                    .then(resolve)
-                    .catch(reject);
-            });
-        });
-    }
-
     const handleSubmit = async () => {
         if (validateForm(form, errors, validationRules.value)) {
             try {
@@ -378,7 +385,7 @@
                 const countryLabel = countries.value.find(c => c.Value === form.value.country)?.Label || form.value.country
                 const industryLabel = industries.value.find(i => i.Value === form.value.industry)?.Label || form.value.industry
 
-                const WP_API_ENDPOINT = 'https://backend.montypay.com/wp-json/contact-form-7/v1/contact-forms/9/feedback';
+                const WP_API_ENDPOINT = 'https://backend.montypay.com/wp-json/contact-form-7/v1/contact-forms/3355/feedback';
 
                 // 1. WordPress — uses Labels for dropdowns
                 const formData = new FormData();
@@ -407,41 +414,43 @@
 
                 // 2. CRM — uses GUIDs for dropdowns
                 const recaptchaToken = await getRecaptchaToken();
+
                 const apiPayload = {
                     firstName: form.value.first_name,
                     lastName: form.value.last_name,
-                    country: form.value.country,               // 👈 GUID Value
+                    country: form.value.country,
                     phoneNumber: form.value.mobile,
                     companyName: form.value.company,
                     workEmail: form.value.email,
                     title: form.value.title,
-                    industry: form.value.industry,             // 👈 GUID Value
-                    hasWebsite: form.value.has_website === 'yes', // 👈 boolean
-                    onlineRevenueBand: Number(form.value.revenue), // 👈 integer (1/2/3/4)
+                    industry: form.value.industry,
+                    hasWebsite: form.value.has_website === 'yes',
+                    onlineRevenueBand: Number(form.value.revenue),
                     message: form.value.message,
-                    'marketing source of contact': '9a7c9282-7ad6-ec11-a7b5-6045bd951f1b',
-                    marketingcampaign: '',
+                    marketingsourceofcontact: '9a7c9282-7ad6-ec11-a7b5-6045bd951f1b',
+                    marketingcampaign: '8ca33b2d-9a2e-f111-88b3-000d3a2c97d1'
                 };
 
                 const apiRes = await fetch(import.meta.env.VITE_MP_API_URL, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
                         ...MP_API_HEADERS,
+                        'Content-Type': 'application/json',
                         RecaptchaToken: recaptchaToken
                     },
                     body: JSON.stringify(apiPayload)
                 });
 
                 if (!apiRes.ok) {
-                    const msg = await apiRes.text();
-                    throw new Error(`MontyPay API error: ${apiRes.status} ${msg}`);
+                    const errorText = await apiRes.text();
+                    console.error(errorText);
+                    throw new Error('Monty Lab API submission failed');
                 }
 
                 submissionMessage.value = "Thank you for your message.";
                 submitting.value = false;
                 resetForm();
-                router.push('/thank-you');
+                // router.push('/thank-you');
 
             } catch (error) {
                 console.error("Form submission error:", error);
